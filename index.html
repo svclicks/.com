@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Photographer Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Elsie:wght@400;900&family=Pinyon+Script&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <img src="logo.png" alt="Company Logo" class="navbar-logo" />
+      <button class="navbar-toggle" id="navbarToggle" aria-label="Open Menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      <ul class="navbar-menu" id="navbarMenu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#albums">Albums</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#packages">Packages</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Home -->
+    <section id="home" class="section home">
+      <div class="animated-bg"></div>
+      <h1 class="home-title">My Photography World</h1>
+    </section>
+
+    <!-- Albums -->
+    <section id="albums" class="section">
+      <h2 class="album-heading">Albums</h2>
+      <div class="album-categories">
+        <button class="album-cat wildlife" onclick="showCategory('Wildlife')">Wildlife</button>
+        <button class="album-cat prewedding" onclick="showCategory('PreWedding')">PreWedding</button>
+        <button class="album-cat wedding" onclick="showCategory('Wedding')">Wedding</button>
+        <button class="album-cat potrait" onclick="showCategory('Potrait')">Potrait</button>
+        <button class="album-cat creative" onclick="showCategory('Creative')">Creative</button>
+      </div>
+      <div class="album-grid" id="albumGrid"></div>
+    </section>
+
+    <!-- About -->
+    <div class="achivement">
+      <img src="ach.jpeg" alt="achivement" />
+    </div>
+
+    <section id="about" class="section about-bg">
+      <h2>About</h2>
+      <p>
+        Welcome to My Photography World!<br />
+        I am <b>Sahil Vadhiya</b>, a passionate photographer specializing in
+        wildlife, weddings, portraits, and creative shoots.<br />
+        My mission is to capture your most precious moments with artistry and
+        authenticity.<br />
+        With years of experience and a creative eye, I strive to deliver
+        stunning visuals that tell your unique story.<br />
+        Thank you for visiting my portfolio!
+      </p>
+    </section>
+
+    <!-- Packages -->
+    <section id="packages" class="section">
+      <h2 id="pack-had">Packages</h2>
+      <div class="package-grid">
+        <div class="card">
+          <h3>25k</h3>
+          <button onclick="selectPackage('25k')">Select</button>
+        </div>
+        <div class="card">
+          <h3>35k</h3>
+          <button onclick="selectPackage('35k')">Select</button>
+        </div>
+        <div class="card">
+          <h3>55k</h3>
+          <button onclick="selectPackage('55k')">Select</button>
+        </div>
+        <div class="card">
+          <h3>85k</h3>
+          <button onclick="selectPackage('85k')">Select</button>
+        </div>
+        <div class="card">
+          <h3>1.10 Lacs</h3>
+          <button onclick="selectPackage('1.10 Lacs')">Select</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section contact-section">
+      <div class="contact-main">
+        <h2>Contact</h2>
+        <div class="contact-details">
+          <p>
+            <strong>Email:</strong>
+            <a href="mailto:svayar18@gmail.com">svayar18@gmail.com</a>
+          </p>
+          <p>
+            <strong>Phone:</strong>
+            <a href="tel:+919979959194"> +91 9979959194</a>
+          </p>
+          <div class="social-media">
+            <a
+              href="https://www.instagram.com/s_v_clicks_official/"
+              target="_blank"
+              title="Instagram"
+            >
+              <img src="instagram.png" alt="Instagram" class="social-icon" />
+            </a>
+
+            <a
+              href="https://www.youtube.com/@S_V_CLICK_OFFICIAL"
+              target="_blank"
+              title="YouTube"
+            >
+              <img src="youtube.png" alt="YouTube" class="social-icon" />
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="contact-info">
+        <div class="copyright">
+          <p>
+            &copy; 2025 Sahil Vahiya Portfolio. All rights reserved.<br />
+            All website content and images are protected by copyright.<br />
+            Unauthorized use or reproduction is strictly prohibited.
+          </p>
+        </div>
+        <div class="terms">
+          <h3>Terms &amp; Conditions</h3>
+          <ul>
+            <li>
+              10% of the payment is to be paid in advance to confirm the order.
+            </li>
+            <li>40% of the payment is to be paid after the shoot.</li>
+            <li>
+              The remaining balance is to be paid at the time of delivery.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- WhatsApp Floating Button -->
+    <button class="whatsapp-btn" onclick="openWhatsApp()">
+      <img id="whlogo" src="whlogo.png" alt="📱" srcset="" />
+    </button>
+
+  </body>
+  <script>
+     let selectedPackage = null;
+const whatsappNumber = "919979959194"; // replace with your WhatsApp number
+
+// Open WhatsApp with message
+function openWhatsApp() {
+  const message = selectedPackage
+    ? `Hello, I am interested in your photography package of ${selectedPackage}.`
+    : "Hello, I would like to know more about your photography services.";
+  window.open(
+    `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`
+  );
+}
+
+// Category image info: adjust count as per your images in each folder
+const categoryImages = {
+  Wildlife: { folder: "albums/Wildlife", count: 10 },
+  PreWedding: { folder: "albums/PreWedding", count: 10 }, // <-- fixed spelling
+  Wedding: { folder: "albums/Wedding", count: 10 },
+  Potrait: { folder: "albums/Potrait", count: 10 },
+  Creative: { folder: "albums/Creative", count: 10 },
+};
+
+function showCategory(category) {
+  // Remove active class from all category buttons
+  document
+    .querySelectorAll(".album-cat")
+    .forEach((btn) => btn.classList.remove("active"));
+  // Add active class to the clicked category button
+  const activeBtn = document.querySelector(
+    `.album-cat.${category.replace(/ /g, "").toLowerCase()}`
+  );
+  if (activeBtn) activeBtn.classList.add("active");
+
+  const grid = document.getElementById("albumGrid");
+  grid.innerHTML = "";
+  const info = categoryImages[category];
+  if (!info) return;
+
+  // Load all images asynchronously
+  for (let i = 1; i <= info.count; i++) {
+    const img = document.createElement("img");
+    img.src = `${info.folder}/${i}.jpeg`;
+    img.alt = `${category} ${i}`;
+    img.className = "album-img fade-in-img";
+    img.loading = "lazy";
+    img.style.opacity = 0;
+
+    img.onload = function () {
+      img.style.opacity = 1;
+    };
+    img.onerror = function () {
+      // Optionally hide broken images
+      img.style.display = "none";
+    };
+
+    const item = document.createElement("div");
+    item.className = "album-grid-item";
+    item.appendChild(img);
+    grid.appendChild(item);
+  }
+}
+
+function selectPackage(packageName) {
+  const whatsappNumber = "919979959194"; // your WhatsApp number
+  const message = `I want to go with ${packageName} package.`;
+  window.open(
+    `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`,
+    "_blank"
+  );
+}
+
+// Show default category on page load
+document.addEventListener("DOMContentLoaded", () => showCategory("Wildlife"));
+
+document.addEventListener("DOMContentLoaded", function () {
+  const toggle = document.getElementById("navbarToggle");
+  const menu = document.getElementById("navbarMenu");
+  toggle.addEventListener("click", function () {
+    menu.classList.toggle("open");
+    toggle.classList.toggle("open");
+    if (menu.classList.contains("open")) {
+      menu.style.visibility = "visible";
+    } else {
+      menu.style.visibility = "hidden";
+    }
+  });
+
+  document.querySelectorAll(".navbar-menu a").forEach((link) => {
+    link.addEventListener("click", () => {
+      // Only close menu on mobile (width <= 700px)
+      if (window.innerWidth <= 700) {
+        menu.classList.remove("open");
+        toggle.classList.remove("open");
+        menu.style.visibility = "hidden";
+      }
+    });
+  });
+});
+
+// git
+
+  </script>
+</html>
+
+<!-- gitcode -->
